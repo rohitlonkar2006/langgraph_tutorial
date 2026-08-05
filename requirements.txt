@@ -5,3 +5,4 @@ langchain-community
 langchain-groq
 ipykernel
 pydantic
+duckduckgo-search
