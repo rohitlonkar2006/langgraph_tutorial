@@ -19,7 +19,7 @@ This repository contains Jupyter notebooks covering LangGraph concepts step by s
 | `9_orchestrator-worker.ipynb` | Orchestrator-worker pattern |
 | `10_Generator_Evaluator.ipynb` | Generator-evaluator workflow |
 | `11_Memory.ipynb` | Memory and state management |
-| `12_human-in-loop.ipynb` | Human-in-the-Loop workflow |
+| `12_human-in-loop.ipynb` | Pause a graph for human approval, then resume it |
 
 ## 🧠 Concepts Covered
 
@@ -32,7 +32,7 @@ This repository contains Jupyter notebooks covering LangGraph concepts step by s
 - Orchestrator-worker architecture
 - Generator-evaluator pattern
 - Memory and state
-- Human-in-the-Loop using `interrupt()` and `Command`
+- Human-in-the-Loop using `interrupt()`, checkpointing, and `Command(resume=...)`
 
 ## 🛠️ Tech Stack
 
@@ -138,6 +138,14 @@ Open the `Notebooks` folder and run the notebooks.
       ↓
 12_human-in-loop
 ```
+
+## 🙋 Human-in-the-Loop Example
+
+The final notebook pauses a graph at an approval step with `interrupt()`. It uses
+an in-memory checkpointer and a thread ID to preserve the graph state while
+waiting. Resume the paused run with `Command(resume="accept")` to publish the
+post, or `Command(resume="reject")` to reject it. Run the notebook cells in order
+in the same kernel; the in-memory checkpoint is lost when the kernel stops.
 
 ## 📖 Official Documentation
 
